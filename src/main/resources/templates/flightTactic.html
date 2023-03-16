@@ -1,0 +1,158 @@
+<div class="" th:replace="@{layout/menu}"></div>
+<link rel='stylesheet prefetch' th:href='@{/css/tieudo.css}'>
+<main class="l-main">
+    <div class="content-wrapper content-wrapper--with-bg ">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1 class="page-title">CHẾ ĐỘ TÁC CHIẾN</h1>
+            </div>
+            <div class="col-6">
+                <div id="txt"></div>
+            </div>
+            <div class="col-sm-12">
+                <div style="text-align: center;">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal"
+                            id="create-process-flight" data-backdrop="static" data-keyboard="false">Tạo chu trình bay
+                    </button>
+                </div>
+                <div class="modal fade" id="myModal">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Tạo chu trình bay</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <input class="form-control" type="text" id="plant-process-input"
+                                       placeholder="Tên chu trình bay" autocomplete="off">
+                                <br>
+                                <h4 class="modal-title">Chọn chế độ:</h4>
+                                <div class="radio">
+                                    <label><input type="radio" id="status-tactic" name="status" checked>Tác
+                                        chiến</label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" id="button-add-plant-process"
+                                        onclick="chooseOption(1)">OK
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="content-page">
+                <div id="content" class="row">
+                    <div id="table-controller" class="col-sm-3">
+                        <div>
+                            <h2 id="flight-name"></h2>
+                            <h2 id="status-flight" class="m-t-10"></h2>
+                            <hr>
+                        </div>
+                        <div id="content-map">
+                            <h2>Chọn loại Map</h2>
+                            <div class="maps-show">
+                            </div>
+                            <button id="addMaps" class="btn btn-primary">Chọn bản đồ</button>
+                        </div>
+                        <div id="coordinates" class="coordinates" style="padding: 15px 0px; display:none;">
+                            <input class="form-control" type="hidden" id="flightId">
+                            <h3>Nhập tọa độ mục tiêu:</h3>
+                            <br>
+                            <input class="form-control" type="number" id="topso" name="topso" placeholder="Tốp số"
+                                   maxlength="2"
+                                   autocomplete="off">
+                            <br>
+                            <input class="form-control" type="number" id="toado" name="toado" placeholder="Tọa độ"
+                                   autocomplete="off">
+                            <br>
+                            <input class="form-control" type="number" id="soluong" name="soluong"
+                                   placeholder="Số lượng">
+                            <br>
+                            <input class="form-control" type="number" id="kieuloai" name="type"
+                                   placeholder="Kiểu loại">
+                            <br>
+                            <input class="form-control" type="number" id="caodo" name="height" placeholder="Cao độ">
+                            <br>
+                            <input class="form-control" type="number" id="thoigian" name="time"
+                                   placeholder="Thời gian">
+                            <br>
+                            <button id="addItem" class="btn btn-primary">Thêm</button>
+                        </div>
+                        <div id="flag-icon" style="padding: 15px 0px;">
+                            <h2>Nhập tọa độ sở chỉ huy Tiểu đoàn:</h2>
+                            <div class="form-group row mt-3">
+                                <label class="col-sm-5 col-form-label">Tọa độ</label>
+                                <div class="col-sm-7">
+                                    <input class="form-control" type="text" id="coordinate-battalion"
+                                           placeholder="Sở chi huy tiểu đoàn" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-5 col-form-label">Hiển thị vòng cự ly</label>
+                                <div class="col-sm-7">
+                                    <select type="text" class="form-control" id="is-show-distance">
+                                        <option value="1">Có</option>
+                                        <option value="0">Không</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-5 col-form-label">Cự ly chuyển cấp</label>
+                                <div class="col-sm-7">
+                                    <input type="number" class="form-control" id="distance-chuyen-cap">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-5 col-form-label">Cự ly giao nhiệm vụ</label>
+                                <div class="col-sm-7">
+                                    <input type="number" class="form-control" id="distance-giao-nv">
+                                </div>
+                            </div>
+                            <button id="addFlagIcon" class="btn btn-primary m-t-15">Thêm Cờ</button>
+                            <button id="end-create-battalion" class="btn btn-primary m-t-15">Tiếp tục
+                            </button>
+                        </div>
+                        <div id="flag-brigade" style="padding: 15px 0px; display:none;">
+                            <h2>Nhập tọa độ sở chỉ huy lữ đoàn:</h2>
+                            <input class="form-control m-t-15" type="text" id="brigade" name="flag"
+                                   placeholder="Cờ lữ đoàn" autocomplete="off">
+                            <button id="addFlagBrigade" class="btn btn-primary m-t-15">Thêm</button>
+                        </div>
+                        <div id="tam-phao" style="padding: 15px 0px; display:none;">
+                            <h2>Nhập tọa độ tâm pháo:</h2>
+                            <br>
+                            <input class="form-control" type="text" id="toa-do-phao" name="flag"
+                                   placeholder="Tọa độ pháo"
+                                   autocomplete="off">
+                            <div class="mt-2">
+                                <div class="form-group">
+                                    <label for="select-cannon-type">Chọn loại pháo</label>
+                                    <select class="form-control" id="select-cannon-type">
+                                    </select>
+                                </div>
+                            </div>
+                            <button id="addCannon" class="btn btn-primary">Thêm pháo</button>
+                            <button id="exitAddCannon" class="btn btn-success">Kết thúc</button>
+                        </div>
+                    </div>
+                    <div id="content-table" class="col-sm-9">
+                        <div id="content-left" class="content-table-left" style="position: relative;">
+                            <svg id="svg" style="position: absolute; " width="1121px" height="1121px">
+                                <table id="sub-table">
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</main>
+<div th:replace="@{layout/footer}"></div>
+<script th:src='@{/js/toado.js}'></script>

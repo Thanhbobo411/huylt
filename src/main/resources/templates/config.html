@@ -1,0 +1,293 @@
+<div class="" th:replace="@{layout/menu}"></div>
+<link rel='stylesheet prefetch' th:href='@{/css/tieudo.css}'>
+<main class="l-main">
+    <div class="content-wrapper content-wrapper--with-bg">
+        <h1 class="page-title">Cấu hình hệ thống</h1>
+        <div class="page-content clearfix">
+            <div class="title-content-page">
+                <h3>Cấu hình hệ thống</h3>
+            </div>
+            <div class="content-page p-20">
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+                           aria-controls="pills-home" aria-selected="true">Tọa độ tác chiến</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+                           aria-controls="pills-profile" aria-selected="false">Tọa độ luyện tập</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#edit-profile" role="tab"
+                           aria-controls="pills-contact" aria-selected="false">Cấu hình cự ly pháo</a>
+                    </li>
+                    <!--<li class="nav-item">
+                        <a class="nav-link" id="shifting-distance" data-toggle="pill" href="#pills-shifting-distance"
+                           role="tab" aria-controls="pills-shifting-distance" aria-selected="false">Cấu hình cự ly
+                            chuyển cấp</a>
+                    </li>-->
+                    <li class="nav-item">
+                        <a class="nav-link" id="pill-color-road" data-toggle="pill" href="#edit-flight-route" role="tab"
+                           aria-controls="pills-shifting-distance" aria-selected="false">Cấu hình đường bay</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="google-map" data-toggle="pill" href="#map-image" role="tab"
+                           aria-controls="pills-shifting-distance" aria-selected="false">Cấu hình Map</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade active show" id="pills-home" role="tabpanel"
+                         aria-labelledby="pills-home-tab">
+                        <button id="delete-data-tactic" class="btn btn-primary float-r m-b-15">Thay đổi dữ liệu
+                        </button>
+                        <button id="cancel-data-tactic" class="btn btn-danger float-r m-b-15">Hủy bỏ
+                        </button>
+                        <table class="table table-striped table-bordered m-t-15" id="toa-do-tac-chien">
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <button id="save-data-tactic" class="btn btn-primary float-r">Lưu dữ liệu</button>
+                    </div>
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                        <button id="delete-data-inter-ship" class="btn btn-primary float-r m-b-15">Thay đổi dữ liệu
+                        </button>
+                        <button id="cancel-data-inter-ship" class="btn btn-danger float-r m-b-15">Hủy bỏ
+                        </button>
+                        <table class="table table-striped table-bordered m-t-15" id="toa-do-thuc-tap">
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <button id="save-data-inter-ship" class="btn btn-primary float-r">Lưu dữ liệu</button>
+                    </div>
+                    <div class="tab-pane fade col-sm-8 offset-sm-2" id="edit-profile" role="tabpanel"
+                         aria-labelledby="pills-profile-tab" style="padding:15px 0px;">
+                        <div class="cannon-detail">
+                            <button id="add-new-cannon" class="btn btn-primary float-r m-b-15">Thêm pháo mới</button>
+                            <table class="table table-striped table-bordered m-t-15" style="text-align:center;"
+                                   id="table-cannon-type">
+                                <thead>
+                                <tr>
+                                    <th>Loại pháo</th>
+                                    <th>Cự ly</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="cannon-input" style="display:none;">
+                            <div class="col-5">
+                                <h3 style="padding: 10px 0px;">Vui lòng nhập thông tin loại pháo:</h3>
+                                <label class="cannon-label ">Tên pháo:</label>
+                                <input type="text" class="form-control" id="cannon-name">
+                                <label class="cannon-label ">Cự ly:</label>
+                                <input type="number" class="form-control" id="cannon-distance">
+                                <button id="addNewCannon" style="margin: 10px 0px;" class="btn btn-primary">Lưu</button>
+                                <button id="backDetail" style="margin: 10px 0px;" class="btn btn-danger">Quay lại</button>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="edit-cannon" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalCenterTitle">Sửa thông tin pháo</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group row">
+                                            <label for="name-cannon" class="col-sm-4 col-form-label">Tên loại
+                                                pháo</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="name-cannon"
+                                                       placeholder="tên loại pháo">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="distance-cannon" class="col-sm-4 col-form-label">Tên loại
+                                                pháo</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="distance-cannon"
+                                                       placeholder="cự ly pháo">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" id="save-edit-info-cannon">Lưu
+                                        </button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="tab-pane fade" id="pills-shifting-distance" role="tabpanel"
+                         aria-labelledby="shifting-distance">
+                        <div class="col-sm-8 offset-sm-2">
+                            <table class="table table-bordered m-t-15" style="text-align:center;"
+                                   id="table-shifting-distance">
+                            </table>
+                        </div>
+                        <div class="modal fade" id="edit-distance" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Sửa cự ly thông báo</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="hidden" id="id-distance">
+                                        <div class="form-group row">
+                                            <label for="name-cannon" class="col-sm-4 col-form-label">Tên</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="name-distance" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="distance-cannon" class="col-sm-4 col-form-label">Cự ly</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" id="distance">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" onclick="changeDistance()">Lưu
+                                        </button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                    <div class="tab-pane fade" id="map-image" role="tabpanel" aria-labelledby="shifting-distance">
+                        <div class="col-sm-12">
+                            <button type="button" class="btn btn-success" data-toggle="modal"
+                                    data-target="#popup-upload-image" data-backdrop="static" data-keyboard="false" id="show-popup-choose-maps">
+                                Thêm map mới
+                            </button>
+                            <div class="modal fade" id="popup-upload-image" tabindex="-1" role="dialog"
+                                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Bản đồ tiêu đồ
+                                                PPK673</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="form-import-data">
+                                                <label>Vui lòng tải lên ảnh: <input type="file" id="fileInput" name="fileInput"/></label>
+                                                <br>
+                                                <img id="mapImg" alt="your image" style="display: none;">
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" id="saveMap" class="btn btn-primary"
+                                                    style="display: none;">Lưu ảnh
+                                            </button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="table table-bordered m-t-15" style="text-align:center;" id="table-map-image">
+                                <thead>
+                                    <tr>
+                                        <th>Stt</th>
+                                        <th>Tên ảnh</th>
+                                        <th>Hiển thị</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" role="tabpanel" id="edit-flight-route"
+                         aria-labelledby="shifting-distance">
+                        <table class="table table-bordered m-t-15"
+                               style="text-align:center; color: #black; background-color: #fff;" id="setting-plan">
+                            <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Loại máy bay</th>
+                                <th>Đầu tốp</th>
+                                <th>Màu sắc</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <div class="modal fade" id="edit-setting-plan" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Chỉnh sửa cấu hình đường bay</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="hidden" id="id-setting-plan">
+                                        <div class="form-group row">
+                                            <label for="name-cannon" class="col-sm-4 col-form-label">Tên tốp
+                                                bay</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" disabled id="top-plan-name">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="distance-cannon" class="col-sm-4 col-form-label">Màu
+                                                sắc</label>
+                                            <div class="col-sm-8">
+                                                <div class="setting-plan mt-3" id="color-plan"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="distance-cannon" class="col-sm-4 col-form-label">Giới hạn
+                                                từ </label>
+                                            <div class="col-sm-8">
+                                                <input id="limit-from" type="number" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="distance-cannon" class="col-sm-4 col-form-label">Giới hạn
+                                                đến </label>
+                                            <div class="col-sm-8">
+                                                <input id="limit-to" type="number" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" id="save-setting-plan">Lưu
+                                        </button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<div th:replace="@{layout/footer}"></div>
+<script th:src='@{/js/config.js}'></script>
+<script th:src='@{/js/uploadImage.js}'></script>

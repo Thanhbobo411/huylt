@@ -1,0 +1,161 @@
+<div class="" th:replace="@{layout/menu}"></div>
+<link rel='stylesheet prefetch' th:href='@{/css/lib/data_tables.min.css}'>
+<link rel='stylesheet prefetch' th:href='@{/css/tieudo.css}'>
+<link rel='stylesheet prefetch' th:href='@{/css/importFile.css}'>
+<main class="l-main">
+    <div class="content-wrapper content-wrapper--with-bg">
+        <h1 class="page-title">Cấu hình hệ thống</h1>
+        <div class="page-content clearfix">
+            <div class="row flight-table">
+                <h1 class="col-sm-3 offset-sm-5" id="flight-name"></h1>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-primary float-r ml-2" id="back-session">Quay lại</button>
+                    <button type="button" class="btn btn-primary float-r" id="button-review-process">Chạy</button>
+                    <button class="btn btn-danger float-r" id="end-process">Kết thúc chu trình</button>
+                </div>
+            </div>
+            <div>
+                <div class="flight-content col-sm-12">
+                    <div id="flight-coordinate">
+                        <input type="hidden" id="flight-id"/>
+                        <input type="hidden" id="time"/>
+                        <input type="hidden" id="times"/>
+                        <table id="detail-flight-table" class="table table-striped table-bordered">
+                            <thead>
+                            <tr role="row">
+                                <th class="w-20px">STT</th>
+                                <th>Đầu tốp</th>
+                                <th>Tọa độ</th>
+                                <th>Số lượng</th>
+                                <th>Kiểu loại</th>
+                                <th>Cao độ</th>
+                                <th>Thời gian</th>
+                                <th>Ghi chú</th>
+                            </tr>
+                            </thead>
+                            <tbody style="text-align:center">
+                            </tbody>
+                        </table>
+                        <div class="col-sm-12">
+                            <button type="button" class="btn btn-danger float-r mt-2" id="button-delete-data">Xóa dữ liệu</button>
+                        </div>
+                    </div>
+                    <div class="row" id="import-data">
+                        <div class="col-2">
+                            <form id="form-import-data">
+                                <div class="input-file-container">
+                                    <input class="input-file" id="my-file" type="file" name="file">
+                                    <label tabindex="0" for="my-file" class="input-file-trigger">Chọn file cần nhập</label>
+                                </div>
+                                <p class="file-return"></p>
+                            </form>
+                        </div>
+                        <div class="col-9" style="padding: 6px;">
+                            <button type="button" class="btn btn-primary" id="button-confirm-file">Xác nhận</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="content-review-flight" class="col-sm-12 row" style="display: none;">
+                    <div class="col-sm-3" id="coordinate-title" >
+                        <div id="coordinates" class="coordinates" style="padding: 15px 0px; display: none;">
+                            <input class="form-control" type="hidden" id="flightId">
+                            <div id="flag-icon" style="padding: 15px 0px;">
+                                <h2>Nhập tọa độ sở chỉ huy Tiểu đoàn:</h2>
+                                <div class="form-group row mt-3">
+                                    <label class="col-sm-5 col-form-label">Tọa độ</label>
+                                    <div class="col-sm-7">
+                                        <input class="form-control" type="text" id="coordinate-battalion" placeholder="Sở chi huy tiểu đoàn" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-5 col-form-label">Hiển thị vòng cự ly</label>
+                                    <div class="col-sm-7">
+                                        <select type="text" class="form-control" id="is-show-distance">
+                                            <option value="1">Có</option>
+                                            <option value="0">Không</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-5 col-form-label">Cự ly chuyển cấp</label>
+                                    <div class="col-sm-7">
+                                        <input type="number" class="form-control" id="distance-chuyen-cap">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-5 col-form-label">Cự ly giao nhiệm vụ</label>
+                                    <div class="col-sm-7">
+                                        <input type="number" class="form-control" id="distance-giao-nv">
+                                    </div>
+                                </div>
+                                <button id="addFlagIcon" class="btn btn-primary m-t-15">Thêm Cờ</button>
+                                <button id="end-create-battalion" class="btn btn-primary m-t-15">Tiếp tục</button>
+                            </div>
+                            <div id="flag-brigade" style="padding: 15px 0px; display:none;">
+                                <h2>Nhập tọa độ sở chỉ huy Lữ đoàn:</h2>
+                                <input class="form-control m-t-15" type="text" id="brigade" name="flag" placeholder="Sở chi huy lữ đoàn" autocomplete="off">
+                                <button id="addFlagBrigade" class="btn btn-primary m-t-15">Thêm</button>
+                            </div>
+                            <div id="tam-phao" style="padding: 15px 0px; display:none;">
+                                <h2>Nhập tọa độ tâm pháo:</h2>
+                                <br>
+                                <input class="form-control" type="text" id="toa-do-phao" name="flag"
+                                       placeholder="Tọa độ pháo"
+                                       autocomplete="off">
+                                <div class="mt-2">
+                                    <div class="form-group">
+                                        <label for="select-cannon-type">Chọn loại pháo</label>
+                                        <select class="form-control" id="select-cannon-type">
+                                        </select>
+                                    </div>
+                                </div>
+                                <button id="addCannon" class="btn btn-primary">Thêm pháo</button>
+                                <button id="exitAddCannon" class="btn btn-danger">Kết thúc</button>
+                            </div>
+                        </div>
+                        <div id="cannonCoordinates" class="coordinates" style="padding: 15px 0px; display: none;">
+                            <h2 id="title-cannon"></h2>
+                            <br>
+                            <input class="form-control" type="text" id="toa-do-phao-moi" name="flag"
+                                   placeholder="Tọa độ pháo"
+                                   autocomplete="off">
+                            <div class="mt-2">
+                                <div class="form-group">
+                                    <label for="select-cannon-type">Chọn loại pháo</label>
+                                    <select class="form-control" id="select-new-cannon-type">
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <button id="saveCannonCoordinates" class="btn btn-primary">Lưu dữ liệu</button>
+                        </div>
+                        <div id="content-map">
+                            <h2>Chọn loại Map</h2>
+                            <div class="maps-show">
+                            </div>
+                            <button id="addMaps" class="btn btn-primary">Chọn bản đồ</button>
+                        </div>
+                    </div>
+                    <div id="content-table" class="col-sm-9">
+                        <div id="content-left" class="content-table-left" style="position: relative;">
+                            <svg id="svg" style="position: absolute; " width="1121px" height="1121px">
+                                <table id="sub-table">
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<audio id="play-read-coordinate">
+</audio>
+<div th:replace="@{layout/footer}"></div>
+<script th:src='@{/js/lib/data_tables.min.js}'></script>
+<script th:src='@{/js/flightDetail.js}'></script>
+<script th:src='@{/js/importFile.js}'></script>
+<script th:src='@{/js/readFirstCoordinate.js}'></script>
+<script th:src='@{/js/constant.js}'></script>

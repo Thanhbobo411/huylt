@@ -1,0 +1,90 @@
+<div class="" th:replace="@{layout/menu}"></div>
+<link rel='stylesheet prefetch' th:href='@{/css/tieudo.css}'>
+<main class="l-main">
+    <div class="content-wrapper content-wrapper--with-bg ">
+        <div class="image-title">
+            <div class="container">
+                <h1>Tiểu đoàn PPK3 - Lữ đoàn PK673</h1>
+            </div>
+        </div>
+        <div class="page-content mt-3">
+            <div class="title-content-page">
+                <h3>Giới thiệu về lữ đoàn PK673</h3>
+            </div>
+            <div class="mt-3">
+                <div id="review-brigade">
+                    <p id="content-brigade">
+                        <button class="btn btn-secondary" type="button" id="button-edit-content-brigade">Sửa</button>
+                        <span class="w-space"></span>
+                    </p>
+                    <div id="block-edit-brigade">
+                        <textarea class="form-control" id="edit-content-brigade" rows="5"></textarea>
+                        <button class="btn btn-secondary mt-2" type="button" id="button-save-content-brigade">Lưu
+                        </button>
+                        <button class="btn btn-danger mt-2" type="button" id="button-close-content-brigade">Hủy
+                        </button>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <p>
+                        <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#service-app">
+                            Chức năng hệ thống
+                        </button>
+                    </p>
+                    <div class="collapse mt-3" id="service-app">
+                        <div id="block-service-tactic" class="col-12">
+                            <div class="title-service">
+                                Chức năng tác chiến
+                            </div>
+                            <div class="content-service">
+                                <p id="service-tactic" class="service-content">
+                                    <button class="btn btn-secondary button-edit-text" type="button"
+                                            id="button-edit-content-service-tactic">Sửa
+                                    </button>
+                                    <span class="w-space"></span>
+                                    <button class="btn btn-success" type="button" onclick="window.location.href='/api/tactic'">Chi tiết</button>
+                                </p>
+                                <div id="block-edit-service-tactic">
+                                    <textarea class="form-control" id="edit-service-tactic" rows="5"></textarea>
+                                    <button class="btn btn-secondary mt-2" type="button"
+                                            id="button-save-service-tactic">Lưu
+                                    </button>
+                                    <button class="btn btn-danger mt-2" type="button" id="button-close-service-tactic">
+                                        Hủy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="block-service-interShip" class="col-12 mt-4">
+                            <div class="title-service">
+                                Chức năng luyện tập
+                            </div>
+                            <div class="content-service">
+                                <p id="service-interShip" class="service-content">
+                                    <button class="btn btn-secondary button-edit-text" type="button"
+                                            id="button-edit-content-service-interShip">Sửa
+                                    </button>
+                                    <span class="w-space"></span>
+                                    <button class="btn btn-success" type="button" onclick="window.location.href='/api/interShip'">Chi tiết</button>
+                                </p>
+                                <div id="block-edit-service-interShip">
+                                    <textarea class="form-control" id="edit-service-interShip" rows="5"></textarea>
+                                    <button class="btn btn-secondary mt-2" type="button"
+                                            id="button-save-service-interShip">Lưu
+                                    </button>
+                                    <button class="btn btn-danger mt-2" type="button"
+                                            id="button-close-service-interShip">Hủy
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<div th:replace="@{layout/footer}"></div>
+<script th:src='@{/js/home.js}'></script>
+

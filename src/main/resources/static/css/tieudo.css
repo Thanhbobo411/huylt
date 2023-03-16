@@ -1,0 +1,383 @@
+#sub-table {
+	border: none;
+	border-collapse: collapse;
+	width: 1001px;
+	height: 1001px;
+}
+
+table#sub-table td {
+	padding: 0;
+	border: 0.1px solid #dee2e6;
+	position: relative;
+}
+
+table#sub-table .tactic {
+	padding: 9px 38px;
+	position: absolute;
+	font-size: 25px;
+	color: #ff2c2c;
+}
+
+table#sub-table .interShip {
+	padding: 50px 38px;
+	position: absolute;
+	font-size: 25px;
+	color: #2a07e8;
+}
+
+table.sub-sub-class {
+	width: 101px;
+	height: 101px;
+	border-collapse: collapse;
+}
+
+table.sub-sub-class .icon-span {
+	font-size: 20px;
+	position: absolute;
+}
+
+table.sub-sub-class td:hover {
+	background-color: #cccccc;
+}
+
+#content {
+	margin: 10px 10px;
+	display: flex;
+}
+
+#table-controller {
+	width: 30%;
+	padding: 0px 20px;
+	float: left;
+}
+
+#table-controller .coordinates .form-control {
+	
+}
+
+#table-controller .coordinates .content-note {
+	padding: 20px 0px;
+}
+
+#content-table {
+	width: 1100px;
+	height: 1100px;
+	float: right;
+}
+
+#content-table .content-table-left {
+	float: left;
+}
+
+#content-table .content-table-right {
+	width: 30%;
+	float: right;
+}
+
+#content-table .content-table-right .content-title {
+	padding-left: 30px;
+}
+
+#content-table .content-table-right .content-title p {
+	font-size: 20px;
+	color: #7d6e7d;
+}
+
+#header, #footer {
+	padding: 1em;
+	color: white;
+	background-color: #0087c7;
+	clear: left;
+	text-align: center;
+}
+
+#toa-do-tac-chien td, #toa-do-thuc-tap td{
+    width: 10%;
+}
+
+#sub-table{
+    margin: 50px;
+    /*background-image: url('/css/image/picture.png');*/
+}
+
+#coordinates .form-control{
+    width: auto !important;
+}
+
+.toa-do-ban-dau{
+    position: absolute;
+    width: 100px;
+    color: a28d98c4;
+    transform: translate(-50%, -50%);
+    text-align: -webkit-center;
+}
+
+.top-so-ban-dau{
+    position: absolute;
+    font-size: 25px;
+    left: -10px;
+    top: 3px;
+}
+
+.toa-do-ban-dau .toa-do-top{
+    font-size: 15px;
+}
+
+.toa-do-ban-dau .toa-do-bottom{
+    font-size: 15px;
+}
+
+.toa-do-ban-dau .hr-style{
+    width: 60px;
+    border: 0;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border-top: 2px solid #da1426c4;
+}
+
+.sub-sub-class .span-time{
+    color: #102c58;
+    position: absolute;
+    font-size: 15px;
+}
+
+.ajax-loader {
+    visibility: hidden;
+    background-color: rgba(255,255,255,0.7);
+    position: absolute;
+    z-index: +100 !important;
+    width: 100%;
+    height:100%;
+}
+
+.ajax-loader img {
+  position: relative;
+  top:50%;
+  left:50%;
+}
+
+#txt{
+    display: none;
+    float: right;
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 10px;
+    -webkit-box-shadow: inset 10px 10px 43px -10px rgba(128,49,128,1);
+    -moz-box-shadow: inset 10px 10px 43px -10px rgba(128,49,128,1);
+    box-shadow: inset 10px 10px 43px -10px rgba(128,49,128,1);
+}
+
+.icon-flag{
+    position: absolute;
+}
+
+.icon-cannon{
+    top: -10px;
+    left: -10px;
+    position: absolute;
+}
+
+.so-dai-doi{
+    position: absolute;
+    font-size: 13px;
+}
+
+.mat-tieu{
+    position: absolute;
+    font-size: 12px;
+    top: 17px;
+    left: 5px;
+}
+.icon-x{
+    position: absolute;
+    color: red;
+    font-size: 12px;
+}
+#cannon-input{
+    padding: 10px 15px;
+    -webkit-box-shadow: 10px 10px 75px -37px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 75px -37px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 75px -37px rgba(0,0,0,0.75);
+    border-radius: 15px;
+}
+
+.cannon-name{
+    padding: 10px 0px;
+}
+
+.cannon-label{
+    font-size: 16px;
+}
+
+#flight-table .container {
+  width: 500px;
+  margin: auto;
+  text-align: center;
+}
+.pagination {
+  width: 400px;
+  margin-left: 50px;
+}
+.pagination a {
+  display: block;
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+.pagination a.active {
+    background-color: #343a40;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+#flight-table_wrapper{
+    width: 100%;
+}
+
+#flight-table{
+   text-align: center;
+}
+
+#table-shifting-distance th{
+    width: 50%;
+}
+
+#table-shifting-distance th, #table-shifting-distance td{
+    vertical-align: middle !important;
+}
+
+#table-shifting-distance input{
+    width: 50px;
+    display: none;
+}
+
+#cu-ly-chuyen-cap-ok, #cu-ly-giao-nv-ok{
+    display: none;
+}
+
+.setting-plan{
+    width: auto;
+    height: 3px;
+}
+
+.flight-route{
+    width: 100px;
+    height: 30px;
+}
+
+#mapImg{
+    display: block;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#table-map-image img {
+    width: 150px;
+    height: auto;
+}
+
+#table-map-image tbody td {
+    vertical-align: middle;
+}
+
+.class-cannon {
+    fill: none;
+    stroke-width: 1.5px;
+    stroke: #ff0000;
+    stroke-dasharray: 5,5;
+}
+
+.dropdown-toggle::after {
+    content: none !important;
+}
+
+#review-brigade{
+    padding: 20px;
+    -webkit-box-shadow: 10px 10px 59px -27px rgba(133,111,133,1);
+    -moz-box-shadow: 10px 10px 59px -27px rgba(133,111,133,1);
+    box-shadow: 10px 10px 59px -27px rgba(133,111,133,1);
+    border-radius: 15px;
+}
+
+#create-process-flight{
+    height: 70px;
+    width: 400px;
+    font-size: 25px;
+}
+
+.image-title{
+    background: url(/css/image/vietnam.jpg) top left/cover no-repeat;
+    z-index: 1;
+    padding: 200px 0;
+    position: relative;
+    text-align: center;
+    background-size: cover;
+    background-position: center center;
+    margin: -25px -25px 0px -25px;
+}
+.image-title h1 {
+    color: #000;
+    font-size: 65px;
+    font-weight: 600;
+    line-height: 80px;
+    text-transform: uppercase;
+}
+
+#block-edit-brigade, #block-edit-service-tactic, #block-edit-service-interShip {
+    display: none;
+}
+
+#content-brigade {
+    position: relative;
+}
+
+#button-edit-content-brigade{
+    position: absolute;
+    display: none;
+}
+
+#content-brigade:hover #button-edit-content-brigade{
+    display: block;
+}
+
+.title-service{
+    height: 40px;
+    width: 15%;
+    background: #bdc2fd;
+    text-align: center;
+    padding-top: 10px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.content-service{
+    margin-top:10px;
+    padding: 20px;
+    -webkit-box-shadow: 10px 10px 59px -27px rgba(133,111,133,1);
+    -moz-box-shadow: 10px 10px 59px -27px rgba(133,111,133,1);
+    box-shadow: 10px 10px 59px -27px rgba(133,111,133,1);
+    border-radius: 15px;
+    position: relative;
+}
+
+.button-edit-text{
+    position:absolute;
+    display: none;
+}
+
+.service-content:hover .button-edit-text{
+    display: block;
+}
+
+.w-space {
+    white-space: pre-line;
+    display: block;
+}

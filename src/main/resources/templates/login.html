@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/util.css}">
+    <link rel="icon" th:href="@{/css/image/logo.png}" sizes="32x32" type="image/png">
+</head>
+<body>
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
+
+            <form class="login100-form validate-form" method="post" th:action="@{/login}">
+				<span class="login100-form-title p-b-55">
+					Đăng nhập
+				</span>
+                <div th:if="${param.error}">
+                    <label class="error">Tên đăng nhập hoặc mật khẩu không đúng.</label>
+                </div>
+                <div class="wrap-input100 validate-input m-b-16">
+                    <input class="input100" type="text" id="username" placeholder="Tài khoản" required="" name="login"
+                           oninvalid="this.setCustomValidity('Bạn chưa nhập tài khoản')"
+                           oninput="setCustomValidity('')">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<span class="fa fa-user"></span>
+						</span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-16">
+                    <input class="input100" type="password" id="password" placeholder="Mật khẩu" required=""
+                           name="password" oninvalid="this.setCustomValidity('Bạn chưa nhập mật khẩu')"
+                           oninput="setCustomValidity('')">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<span class="fa fa-lock"></span>
+						</span>
+                </div>
+
+                <div class="container-login100-form-btn p-t-25">
+                    <input class="login100-form-btn" type="submit" value="Đăng nhập">
+                </div>
+
+                <div class="text-center w-full p-t-115">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

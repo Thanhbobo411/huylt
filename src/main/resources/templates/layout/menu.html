@@ -1,0 +1,81 @@
+<html>
+    <head th:replace="@{layout/head}">
+    </head>
+    <body class="sidebar-is-expanded" onload="startTime()">
+        <header class="l-header">
+            <div class="l-header__inner clearfix">
+                <div class="c-header-icon js-hamburger">
+                    <div class="hamburger-toggle">
+                        <span class="bar-top"></span>
+                        <span class="bar-mid"></span>
+                        <span class="bar-bot"></span>
+                    </div>
+                </div>
+                <div class="header-icons-group dropdown">
+                    <div class="c-header-icon basket dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
+                         aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-sign-out"></i>
+                    </div>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/logout">Đăng xuất</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="l-sidebar">
+            <div class="logo">
+                <div class="logo__txt" data-toggle="tooltip" title="PPK673" id="logo-vanhoa">PPK673</div>
+            </div>
+            <div class="l-sidebar__content">
+                <nav class="c-menu js-menu">
+                    <ul class="u-list">
+                        <a href="/api/home">
+                            <li class="c-menu__item" data-toggle="tooltip" title="Trang chủ">
+                                <div class="c-menu__item__inner">
+                                    <i class="fa fa-home"></i>
+                                    <div class="c-menu-item__title">
+                                        <span>Trang chủ</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </a>
+                        <a href="/api/tactic">
+                            <li class="c-menu__item" data-toggle="tooltip" title="Chế độ tác chiến">
+                                <div class="c-menu__item__inner">
+                                    <i class="fa fa-tasks"></i>
+                                    <div class="c-menu-item__title">
+                                        <span>Chế độ tác chiến</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </a>
+                        <a href="/api/interShip">
+                            <li class="c-menu__item" data-toggle="tooltip" title="Chế độ luyện tập">
+                                <div class="c-menu__item__inner">
+                                    <i class="fa fa-table"></i>
+                                    <div class="c-menu-item__title">
+                                        <span>Chế độ luyện tập</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </a>
+                        <a href="/api/config">
+                            <li class="c-menu__item" data-toggle="tooltip" title="Cấu hình">
+                                <div class="c-menu__item__inner">
+                                    <i class="fa fa-cogs"></i>
+                                    <div class="c-menu-item__title">
+                                        <span>Cấu hình hệ thống</span>
+                                    </div>
+                                    <div class="c-menu-item__expand js-expand-submenu"></div>
+                                </div>
+                            </li>
+                        </a>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="ajax-loader">
+            <img th:src='@{/css/image/giphy.gif}' width='32px' height='32px'>
+        </div>
+    </body>
+</html>

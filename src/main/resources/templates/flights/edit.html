@@ -1,0 +1,189 @@
+<div class="" th:replace="@{layout/menu}"></div>
+<link rel='stylesheet prefetch' th:href='@{/css/lib/data_tables.min.css}'>
+<link rel='stylesheet prefetch' th:href='@{/css/tieudo.css}'>
+<link rel='stylesheet prefetch' th:href='@{/css/importFile.css}'>
+<main class="l-main">
+    <div class="content-wrapper content-wrapper--with-bg">
+        <h1 class="page-title">Cấu hình hệ thống</h1>
+        <div class="page-content clearfix">
+            <div class="row flight-table">
+                <h1 class="col-sm-3 offset-sm-5" id="flight-name"></h1>
+                <div class="col-sm-4">
+                    <button type="button" class="btn btn-danger  float-r" id="buttonExitFlight">Thoát khỏi</button>
+                </div>
+            </div>
+            <div>
+                <div id="content-config-coordinate" class="row">
+                    <div class="col-12">
+                        <table id="table-config-coordinate" class="table table-bordered center">
+                            <thead>
+                            <tr>
+                                <th>Tên</th>
+                                <th>Tọa độ</th>
+                                <th>Cự ly chuyển cấp</th>
+                                <th>Cự ly giao nhiệm vụ</th>
+                                <th>Cự ly bắn hiệu quả</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <div>
+                            <button type="button" class="btn btn-success float-r ml-2" data-toggle="modal" data-backdrop="static"
+                                    data-keyboard="false" data-target="#popup-edit-cannon" onclick="showPopupAddCannon()">Thêm trận địa pháo
+                            </button>
+                            <button type="button" class="btn btn-success float-r" data-toggle="modal"
+                                    data-backdrop="static"
+                                    data-keyboard="false" data-target="#popup-edit-battalion" onclick="showPopupAddBattalion()">Thêm sở chỉ huy tiểu
+                                đoàn
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div id="content-review-flight" class="row">
+                    <div class="col-3" id="table-controller">
+                        <div id="content-map">
+                            <h2>Chọn loại Map</h2>
+                            <div class="maps-show">
+                            </div>
+                            <button id="addMaps" class="btn btn-primary">Chọn bản đồ</button>
+                        </div>
+                    </div>
+                    <div id="content-table" class="col-9">
+                        <div id="content-left" class="content-table-left" style="position: relative;">
+                            <svg id="svg" style="position: absolute;" width="1121px" height="1121px">
+                                <table id="sub-table">
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="popup-edit-brigade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sửa thông tin sở chỉ huy lữ đoàn</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="id-flag-brigade-edit">
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Tọa độ</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="coordinate-brigade">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="addFlagBrigade" onclick="addBrigade()">Thêm
+                    </button>
+                    <button type="button" class="btn btn-primary" id="saveFlagBrigade">Lưu
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="popup-edit-battalion" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sửa thông tin sở chỉ huy tiểu đoàn</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="id-flag-battalion-edit">
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Tọa độ</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="coordinate-battalion">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Hiển thị vòng cự ly</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="is-show-distance">
+                                <option value="1" id="select-show">Có</option>
+                                <option value="0" id="select-not-show">Không</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Cự ly chuyển cấp</label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" id="distance-chuyen-cap">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Cự ly giao nhiệm vụ</label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" id="distance-giao-nv">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="addFlagCoordinates">Thêm
+                    </button>
+                    <button type="button" class="btn btn-primary" id="saveFlagCoordinates">Lưu
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="popup-edit-cannon" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sửa thông tin trận địa pháo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="id-cannon-edit">
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Tọa độ</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="coordinate-cannon">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="select-cannon-type" class="col-sm-4 col-form-label">Chọn loại pháo</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="select-cannon-type">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="addCannonCoordinates">Thêm
+                    </button>
+                    <button type="button" class="btn btn-primary" id="saveCannonCoordinates">Lưu
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<audio id="play-read-coordinate">
+</audio>
+<div th:replace="@{layout/footer}"></div>
+<script th:src='@{/js/lib/data_tables.min.js}'></script>
+<script th:src='@{/js/editFlight.js}'></script>
+<script th:src='@{/js/readFirstCoordinate.js}'></script>
+<script th:src='@{/js/constant.js}'></script>
